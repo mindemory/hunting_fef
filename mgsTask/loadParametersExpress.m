@@ -1,4 +1,4 @@
-function parameters = loadParametersVisual(subjID)
+function parameters = loadParametersExpress(subjID)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % program basic settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,7 +12,7 @@ parameters.dotSize = 7;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % study parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-parameters.studyname = 'MGS_TMS_FEF';
+parameters.studyname = 'Express_TMS_FEF';
 parameters.subject = subjID;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stimulus parameters
@@ -33,11 +33,10 @@ parameters.pulseDuration = (parameters.pulseNum-1)/parameters.pulseFrequency; % 
 % timing parameters (in seconds)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 parameters.initDuration = 1;
-parameters.sampleDuration = 0.5;
-parameters.delayDuration = 3;
-parameters.delay1Duration = parameters.delayDuration/2;
-parameters.delay2Duration = parameters.delayDuration/2;%-parameters.delay1Duration-parameters.pulseDuration;
-parameters.respDuration = 0.85;
-parameters.feedbackDuration = 0.8;
-parameters.itiDuration = [1.5,2.5];
+parameters.vanishDuration = 0.2;
+parameters.vanish1Duration = parameters.vanishDuration/2;
+parameters.vanish2Duration = parameters.vanishDuration/2;%-parameters.delay1Duration-parameters.pulseDuration;
+parameters.sampleDuration = 1;
+parameters.feedbackDuration = 0.85;
+parameters.itiDuration = [1, 2];
 end

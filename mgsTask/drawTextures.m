@@ -19,6 +19,20 @@ switch texture_name
         Screen('FillRect', screen.win, screen.black);
         Screen('FillOval', screen.win, screen.grey, centeredRect_aperture, maxDiameter_aperture)
     
+    case 'ApertureFlip'
+        % Get pixel width and height for inner and outer circle based of VA
+        r_pix_aperture = va2pixel(parameters, screen, parameters.apertureSize);
+        
+        % Coordinates for outer circle
+        baseRect_aperture = [0 0 r_pix_aperture*2 r_pix_aperture*2];
+        maxDiameter_aperture = ceil(max(baseRect_aperture) * 1.1);
+        centeredRect_aperture = CenterRectOnPoint(baseRect_aperture, screen.xCenter, screen.yCenter);
+  
+        % Draw Aperture
+        Screen('FillRect', screen.win, screen.black);
+        Screen('FillOval', screen.win, screen.grey, centeredRect_aperture, maxDiameter_aperture)
+        Screen('Flip', screen.win);
+        
     % Drawing Fixation Cross
     case 'FixationCross'
         if nargin < 4
