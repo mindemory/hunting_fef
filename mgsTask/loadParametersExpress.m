@@ -32,11 +32,11 @@ parameters.pulseDuration = (parameters.pulseNum-1)/parameters.pulseFrequency; % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % timing parameters (in seconds)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-parameters.initDuration = 1;
+parameters.initDuration = 1.5;
 parameters.vanishDuration = 0.2;
 parameters.vanish1Duration = parameters.vanishDuration/2;
 parameters.vanish2Duration = parameters.vanishDuration/2;%-parameters.delay1Duration-parameters.pulseDuration;
 parameters.sampleDuration = 1;
 parameters.feedbackDuration = 0.85;
-parameters.itiDuration = [1, 2];
+parameters.itiDuration = [1.5, 2.5];
 end
