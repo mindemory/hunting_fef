@@ -52,18 +52,18 @@ elseif strcmp(hostname, 'tmsubuntu') % Running stimulus code for testing
     % Relative paths for tmsubuntu
     curr_dir = pwd; filesepinds = strfind(curr_dir,filesep);
     master_dir = curr_dir(1:(filesepinds(end-1)-1));
+    data_dir = curr_dir(1:(filesepinds(end-2)-1));
     % Path to MarkStim
-    trigger_path = [master_dir '/mgs_stimul/EEG_TMS_triggers'];
+    trigger_path = [master_dir '/EEG_TMS_triggers'];
     addpath(genpath(trigger_path));
     if prac_status == 1
-        parameters.EEG = 0; % set to 0 if there is no EEG recording
         end_block = 6; % 6 blocks for practice session
-        expressSacc_data_path = [master_dir '/data_express/expressSacc_practice_data/sub' subjID];
+        expressSacc_data_path = [data_dir '/md_data/TMS_fef/data_express/expressSacc_practice_data/sub' subjID];
     else
-        parameters.EEG = 1;
         end_block = 10; % 10 blocks for main sessions
-        expressSacc_data_path = [master_dir '/data_express/expressSacc_data/sub' subjID];
+        expressSacc_data_path = [data_dir '/md_data/TMS_fef/data_express/expressSacc_data/sub' subjID];
     end
+    tmap_path = [data_dir '/md_data/TMS_fef/express_taskMap.mat'];
     parameters.eyetracker = 1;
     PsychDefaultSetup(1);
 else
@@ -97,7 +97,7 @@ screen = initScreen(parameters);
 if parameters.TMS > 0
     s = TMS('Open');
     TMS('Enable', s);
-    TMS('Timing', s);
+    %TMS('Timing', s);
     TMS('Amplitude', s, TMSamp);
 end
 
@@ -239,7 +239,7 @@ for block = start_block:end_block
         if GetSecs - vanish1StartTime < d1_dur
             WaitSecs(d1_dur - (GetSecs-vanish1StartTime));
         end
-        disp(GetSecs - vanish1StartTime)
+                   
         timeReport.vanish1Duration(trial) = GetSecs - vanish1StartTime;
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +248,7 @@ for block = start_block:end_block
         vanish2StartTime = GetSecs;
         
         if parameters.TMS
-            TMS('Train', s); % Train of TMS pulses, set pulse protocol on MagVenture Timing page
+            TMS('Single', s); % Train of TMS pulses, set pulse protocol on MagVenture Timing page
         end
         
         %record to the edf file that noise mask is started
@@ -270,7 +270,6 @@ for block = start_block:end_block
             WaitSecs(d2_dur - (GetSecs - vanish2StartTime));
         end
         timeReport.vanish2Duration(trial) = GetSecs - vanish2StartTime;
-        disp(GetSecs - vanish2StartTime)
        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Intertrial window
