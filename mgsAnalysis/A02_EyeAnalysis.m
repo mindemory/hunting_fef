@@ -39,15 +39,5 @@ else
         RuniEye_loadonly(p, taskMap, end_block);
     end
 end
-
-
-%% QC plots
-if ~only_edf2asc
-    % Run QC
-    which_excl = [20 22];
-    disp('Running QC')
-    RunQC_EyeData(ii_sess, p, which_excl, {'all_trials'});
-    %RunQC_EyeData(ii_sess, p, which_excl);
-end
 toc
 end
